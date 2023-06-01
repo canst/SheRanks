@@ -27,6 +27,9 @@ $sql = "INSERT INTO universities (university_name,country, city, address, safety
 
 if ($conn->query($sql) === TRUE) {
     echo "Ranking submitted successfully";
+    // Redirect back to index.php after successful submission
+    header("Location: index.php");
+    exit();
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

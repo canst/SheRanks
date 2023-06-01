@@ -24,6 +24,8 @@ if ($conn->connect_error) {
   <meta name="description" content="<?php echo $seo_description; ?>">
   <meta name="keywords" content="<?php echo $seo_keywords; ?>">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
   <style>
     /* Custom CSS styles */
     .hero-image {
@@ -165,50 +167,54 @@ if ($conn->connect_error) {
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
-                    // Group universities by country and city
+                    // Group universities by country
                     $groupedData = array();
                     while ($row = $result->fetch_assoc()) {
                         $country = $row["country"];
-                        $city = $row["city"];
 
-                        // Create a nested array for each country and city
+                        // Create a nested array for each country
                         if (!isset($groupedData[$country])) {
                             $groupedData[$country] = array();
-                        }
-                        if (!isset($groupedData[$country][$city])) {
-                            $groupedData[$country][$city] = array();
                         }
 
                         // Add university data to the nested array
                         $university = array(
+                            "city" => $row["city"],
                             "name" => $row["university_name"],
                             "safety_ranking" => $row["safety_ranking"],
                             "gender_violence_ranking" => $row["gender_violence_ranking"],
                             "inclusivity_ranking" => $row["inclusivity_ranking"]
                         );
-                        array_push($groupedData[$country][$city], $university);
+                        array_push($groupedData[$country], $university);
                     }
 
-                    // Display universities ranking by country and city
-                    foreach ($groupedData as $country => $cities) {
+                    // Display universities ranking by country
+                    foreach ($groupedData as $country => $universities) {
                         echo "<h3>$country</h3>";
-                        foreach ($cities as $city => $universities) {
-                            echo "<h4>$city</h4>";
-                            echo "<ul>";
-                            foreach ($universities as $university) {
-                                $name = $university["name"];
-                                $safety_ranking = $university["safety_ranking"];
-                                $gender_violence_ranking = $university["gender_violence_ranking"];
-                                $inclusivity_ranking = $university["inclusivity_ranking"];
-                                echo "<li>$name</li>";
-                                echo "<ul>";
-                                echo "<li>Safety Ranking: $safety_ranking</li>";
-                                echo "<li>Gender Violence Ranking: $gender_violence_ranking</li>";
-                                echo "<li>Inclusivity Ranking: $inclusivity_ranking</li>";
-                                echo "</ul>";
-                            }
-                            echo "</ul>";
+
+                        // Display universities in a table
+                        echo "<div class='table-responsive'>";
+                        echo "<table class='table table-bordered'>";
+                        echo "<thead><tr><th>City</th><th>University</th><th>Safety Ranking</th><th>Gender Violence Ranking</th><th>Inclusivity Ranking</th></tr></thead>";
+                        echo "<tbody>";
+                        foreach ($universities as $university) {
+                            $city = $university["city"];
+                            $name = $university["name"];
+                            $safety_ranking = $university["safety_ranking"];
+                            $gender_violence_ranking = $university["gender_violence_ranking"];
+                            $inclusivity_ranking = $university["inclusivity_ranking"];
+
+                            echo "<tr>";
+                            echo "<td>$city</td>";
+                            echo "<td>$name</td>";
+                            echo "<td>$safety_ranking</td>";
+                            echo "<td>$gender_violence_ranking</td>";
+                            echo "<td>$inclusivity_ranking</td>";
+                            echo "</tr>";
                         }
+                        echo "</tbody>";
+                        echo "</table>";
+                        echo "</div>";
                         echo "<hr>";
                     }
                 } else {
@@ -218,35 +224,14 @@ if ($conn->connect_error) {
                 // Close the database connection
                 $conn->close();
                 ?>
-
             </div>
         </div>
     </div>
 </section>
 
-    <!-- Custom JavaScript -->
-    <script>
-      // Custom JavaScript code
-      // Add fade-in animation to sections when scrolling
-      const sections = document.querySelectorAll('section');
-      const fadeInOptions = {
-        threshold: 0.3,
-        rootMargin: '0px'
-      };
-  
-      const fadeInObserver = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            fadeInObserver.unobserve(entry.target);
-          }
-        });
-      }, fadeInOptions);
-  
-      sections.forEach(section => {
-        fadeInObserver.observe(section);
-      });
-    </script>
+
+
+
 
   <!-- Contact Section -->
   <section id="contact" class="py-5">
@@ -278,6 +263,9 @@ if ($conn->connect_error) {
 
   <!-- Custom JavaScript -->
   <script src="main.js"></script>
+  <!-- Custom JavaScript -->
+
+
 </body>
 
 </html>
