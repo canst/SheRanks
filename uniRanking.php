@@ -11,7 +11,7 @@
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">SheRanks</a>
+    <a class="navbar-brand" href="index.php">SheRanks</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,28 +43,21 @@
       <div class="form-group row">
         <label for="university-name" class="col-sm-2 col-form-label">University Name</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="university-name" name="university-name" required>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="location" class="col-sm-2 col-form-label">Location</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="location" name="location" required>
+          <input type="text" class="form-control text-uppercase" id="university-name" name="university-name" required>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="country" class="col-sm-2 col-form-label">Country</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="country" name="country" required>
+          <input type="text" class="form-control text-uppercase" id="country" name="country" required>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="city" class="col-sm-2 col-form-label">City</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="city" name="city" required>
+          <input type="text" class="form-control text-uppercase" id="city" name="city" required>
         </div>
       </div>
 

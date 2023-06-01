@@ -14,7 +14,6 @@ if ($conn->connect_error) {
 
 // Retrieve form data
 $universityName = $_POST['university-name'];
-$location = $_POST['location'];
 $country = $_POST['country'];
 $city = $_POST['city'];
 $address = $_POST['address'];
@@ -23,8 +22,8 @@ $genderViolenceRanking = $_POST['gender-violence'];
 $inclusivityRanking = $_POST['inclusivity'];
 
 // Prepare and execute the SQL statement to insert ranking data into the universities table
-$sql = "INSERT INTO universities (university_name, location, country, city, address, safety_ranking, gender_violence_ranking, inclusivity_ranking)
-        VALUES ('$universityName', '$location', '$country', '$city', '$address', '$safetyRanking', '$genderViolenceRanking', '$inclusivityRanking')";
+$sql = "INSERT INTO universities (university_name,country, city, address, safety_ranking, gender_violence_ranking, inclusivity_ranking)
+        VALUES ('$universityName', '$country', '$city', '$address', '$safetyRanking', '$genderViolenceRanking', '$inclusivityRanking')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Ranking submitted successfully";

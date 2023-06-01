@@ -260,7 +260,7 @@ if ($conn->connect_error) {
         </div>
         <div class="col-md-6">
           <h3>Phone</h3>
-          <p>+1 123 456 7890</p>
+          <p>Phone number</p>
         </div>
       </div>
     </div>
