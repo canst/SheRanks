@@ -42,68 +42,7 @@ Contributions are welcome! If you would like to contribute to the SheRanks proje
 
 This project is licensed under the [MIT License](LICENSE).
 
-#### PYTHON BRANCH
+## Contact
 
-SheRanks Project
-SheRanks is a platform dedicated to promoting gender equality and safety for female students in universities. The project aims to create a safe and inclusive environment where all female students can thrive academically and personally. Through our tools and resources, we empower female students to voice their concerns, share experiences, and drive positive change.
+For any inquiries or questions, please contact us at info@sheranks.com
 
-Features
-User Authentication: A secure system for user registration, login, and an editable user profile.
-
-University Ranking: Provides a comprehensive ranking of universities based on safety, gender violence, and inclusivity, driven by AI analysis of user-submitted data.
-
-User Contributions: Authenticated users can post and share their experiences on specific university pages.
-
-Universities Database: A searchable database of universities from around the world.
-
-About Section: Gives an overview of the SheRanks project and its mission.
-
-Statistics Section: Highlights eye-opening statistics on female safety to raise awareness.
-
-Mission Section: Outlines the mission and objectives of SheRanks.
-
-SEO Optimization: Includes SEO metadata for improved search engine visibility.
-
-Installation
-This project is built on the Python Django framework.
-
-1. Clone the repository:
-
-Bash
-
-git clone https://github.com/canst/sheranks.git
-cd sheranks
-2. Switch to the Python branch:
-
-Bash
-
-git checkout python
-3. Set up the Python virtual environment:
-
-Bash
-
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On macOS/Linux
-source venv/bin/activate
-4. Install project dependencies:
-
-Bash
-
-pip install django
-5. Set up the database:
-
-Bash
-
-python manage.py migrate
-6. Create a superuser to access the admin panel:
-
-Bash
-
-python manage.py createsuperuser
-7. Launch the development server:
-
-Bash
-
-python manage.py runserver
