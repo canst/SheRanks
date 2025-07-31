@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}All Universities{% endblock %}
+{% block content %}
+    <h1>All Universities</h1>
+    <ul>
+    {% for university in universities %}
+        <li><a href="{% url 'universities:detail' university.slug %}">{{ university.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
